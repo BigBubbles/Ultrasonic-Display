@@ -1,2 +1,2 @@
 # Ultrasonic-Display
-This software is intend to help robotics designer understand the ultrasonic sensor.
+This software is intended to help robotics designers to understand the ultrasonic sensor.

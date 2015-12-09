@@ -1,6 +1,6 @@
 #!/usr/bin/env python2.7
 """
-
+Ping Class v0.0
 by Yaro Kifor
 
 """
@@ -15,9 +15,9 @@ class Ping:
         self.triggerPin=triggerPin
         self.echoPin=echoPin
         GPIO.setmode(pinMode)
-        GPIO.setup(self.triggerPin, GPIO.in)
+        GPIO.setup(self.triggerPin, GPIO.IN)
         GPIO.output(self.triggerPin, GPIO.LOW)
-        GPIO.setup(self.echoPin, GPIO.output)
+        GPIO.setup(self.echoPin, GPIO.OUT)
     
     def distance(self):
         GPIO.output(self.triggerPin, GPIO.HIGH)
@@ -28,5 +28,5 @@ class Ping:
         timeLength=time.time()
         while(GPIO.input(self.echoPin)==1):
             a=1
-        timeLength=timeLength-time.time()
+        timeLength=time.time()-timeLength
         return timeLength / 170
