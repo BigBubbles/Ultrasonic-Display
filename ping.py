@@ -3,7 +3,7 @@
 Ping Class v0.0
 by Yaro Kifor
 
- used sunfounder as a reference
+ Used sunfounder as a reference
  http://www.sunfounder.com/index.php?c=case_incs&a=detail_&id=309&name=Sensor%20Kit%20for%20B+
 
  """
@@ -25,7 +25,7 @@ class Ping:
     def distance(self):
         #Trigger the sensor
         GPIO.output(self.triggerPin, GPIO.HIGH)
-        time.sleep(0.01)
+        time.sleep(0.0001)
         GPIO.output(self.triggerPin, GPIO.LOW)
         #Wait for raising edge
         while(GPIO.input(self.echoPin)==0):
@@ -38,5 +38,5 @@ class Ping:
         #Get how long the echoPin was high for
         timeLength=time.time()-timeLength
         #Return in meters what sensor deteced
-        # length of echo * 340 (speed of sound) / 2 (half the distance)
-        return timeLength / 170
+        # length of echo * 343.2 (speed of sound in m/s) / 2 (half the distance) * 100 (for cm)
+        return timeLength * 171600 
