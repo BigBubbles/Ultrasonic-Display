@@ -28,12 +28,13 @@ class Ping:
         GPIO.output(self.triggerPin, GPIO.LOW)
         GPIO.setup(self.echoPin, GPIO.IN)
 
-    def triggerSensor(self):
+    def _triggerSensor(self):
         GPIO.output(self.triggerPin, GPIO.HIGH)
         time.sleep(0.0001)
         GPIO.output(self.triggerPin, GPIO.LOW)
         
-    def echoFalling():
+    def _echoFalling():
+        @staticmethod
         #Raise CallbackCalled to be catched
         raise Callbackcalled()
     
@@ -41,7 +42,7 @@ class Ping:
     def distance(self, timeout=0):
         #If timeout is 0 then timeout is forever
         if timeout == 0:
-            tiggerSensor()
+            self._tiggerSensor()
             #Wait for raising edge
             GPIO.wait_for_edge(self.echoPin,GPIO.RISING)
             #Get epoch time
@@ -57,8 +58,8 @@ class Ping:
             echoLength=0
             try:            
                 #Add the event for the call back
-                GPIO.add_event_detect(echoPin,GPIO.FALLING,callback=echoFalling)
-                tiggerSensor()
+                GPIO.add_event_detect(echoPin,GPIO.FALLING,callback=self._echoFalling)
+                self._tiggerSensor()
                 #Get epoch time
                 echoLength=time.time()
                 #Wait for the timeout
